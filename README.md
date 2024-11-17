@@ -6,8 +6,6 @@
 
 This tool provides an interactive CLI interface where users can input parameters or use default examples to generate accurate Cisco configurations. It is designed for network engineers, administrators, and students to simplify and automate network management.
 
----
-
 ## Features
 
 - **Auto DHCP**: Generate DHCP configurations with options for pool name, network, DNS server, and domain name.
@@ -22,8 +20,6 @@ This tool provides an interactive CLI interface where users can input parameters
 - **Address Assignment**: Assign specific IP addresses to interfaces with subnet masks.
 - **Configuration Saving**: Save generated configurations for both routers and switches to a file.
 
----
-
 ## Requirements
 
 - Python 3.6 or higher
@@ -34,8 +30,6 @@ This tool provides an interactive CLI interface where users can input parameters
   ```bash
   pip install -r requirements.txt
   ```
-
----
 
 ## Usage
 
@@ -60,55 +54,35 @@ This tool provides an interactive CLI interface where users can input parameters
    - `Auto Assign Addresses`: Assign IP addresses to router interfaces.
    - `Save Configurations`: Save generated configurations to a file.
 
----
 
 ## Example Usage
 
-### 1. Auto DHCP
+### Auto DHCP
 Input pool name, network details, DNS, and domain to generate a DHCP configuration.
 
 ```text
-Name of Pool: ExamplePool
+Name Of Pool: ExamplePool
 Network Address: 192.168.1.0
-Network Subnet: /24
+Network Subnet (Subnet Mask or CIDR, e.g., /24): /24
 DNS Server: 8.8.8.8
-Domain Name: example.com
+Domain Name: example.local
 ```
 
 **Generated Output**:
 ```plaintext
 ip dhcp excluded-address 192.168.1.1 192.168.1.254
 ip dhcp pool ExamplePool
-   network 192.168.1.0 255.255.255.0
-   default-router 192.168.1.1
-   dns-server 8.8.8.8
-   domain-name example.com
+  network 192.168.1.0 255.255.255.0
+  default-router 192.168.1.1
+  dns-server 8.8.8.8
+  domain-name example.local
+  exit
 ```
 
-### 2. Auto VLAN
-Create VLAN 10 named "Sales_VLAN" and assign FastEthernet0/1 and FastEthernet0/2 to it.
-
-**Generated Output**:
-```plaintext
-vlan 10
-   name Sales_VLAN
-interface FastEthernet0/1
-   switchport mode access
-   switchport access vlan 10
-   no shutdown
-interface FastEthernet0/2
-   switchport mode access
-   switchport access vlan 10
-   no shutdown
-```
-
----
 
 ## Saving Configurations
 
 To save generated configurations, choose the "Save Configurations" option and provide a filename (e.g., `configurations.txt`). The file will contain both router and switch configurations.
-
----
 
 ## License
 
